@@ -1,6 +1,9 @@
 from fastapi import FastAPI
-from controller import auth
-from helper.mongo import connect_to_mongo
+from controllers.auth_controller import router as auth_router
 
-app = FastAPI(on_startup=[connect_to_mongo])
-app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
+app = FastAPI(
+    title="FastAPI Auth Project",
+    version="1.0.0"
+)
+
+app.include_router(auth_router)
